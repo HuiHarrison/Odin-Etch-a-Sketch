@@ -1,13 +1,13 @@
 const grid = document.querySelector(".grid");
-const gridInput = document.querySelector(".range-bar input");
-const gridSize = document.querySelector("#gridSize");
+const gridInput = document.querySelector("#myRange");
+const sliderValue = document.querySelector(".PB-range-slidervalue");
 const rainbowBtn = document.querySelector("#rainbowBtn");
 
 gridInput.addEventListener("input", createGrid);
 
 function createGrid() {
     // Update #gridSize
-    gridInput.addEventListener("input", () => {gridSize.innerText = `${gridInput.value} x ${gridInput.value}`});
+    gridInput.addEventListener("input", () => {sliderValue.innerText = `${gridInput.value}`});
     // Clear Grid
     grid.innerHTML = ""
     // Create Grid
