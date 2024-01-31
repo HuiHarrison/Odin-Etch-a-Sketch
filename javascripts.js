@@ -1,21 +1,32 @@
 const grid = document.querySelector(".grid");
+const gridInput = document.querySelector(".range-bar input");
+const gridSize = document.querySelector("#gridSize");
 
+gridInput.addEventListener("input", createGrid);
 
-// Create Grid
-for(let y=0; y<16;y++){
-    // Create rows
-    const row = document.createElement("div");
-    row.setAttribute("class", "row");
-    grid.append(row);
+function createGrid() {
+    // Update #gridSize
+    gridInput.addEventListener("input", () => {gridSize.innerText = `${gridInput.value} x ${gridInput.value}`});
+    // Clear Grid
+    grid.innerHTML = ""
+    // Create Grid
+    for(let y=0; y<gridInput.value; y++){
+        // Create rows
+        const row = document.createElement("div");
+        row.setAttribute("class", "row");
+        grid.append(row);
 
-    // Add boxes to rows
-    for (let x=0; x<16; x++) {
-        const box = document.createElement("div");
-        box.setAttribute("class", "box");
-        // Change colour if hover
-        box.addEventListener("mouseover", () => {box.setAttribute("style", "background-color: #1d3557;")}, false);
-        box.addEventListener("mouseout", () => {box.setAttribute("style", "background-color: #1d3557;")}, false);
-        row.append(box);
+        // Add boxes to rows
+        for (let x=0; x<gridInput.value; x++) {
+            const box = document.createElement("div");
+            box.setAttribute("class", "box");
+            // Change colour if hover
+            box.addEventListener("mouseover", () => {box.setAttribute("style", "background-color: black;")}, false);
+            box.addEventListener("mouseout", () => {box.setAttribute("style", "background-color: black;")}, false);
+            row.append(box);
+        }
     }
 }
+    
 
+createGrid()
