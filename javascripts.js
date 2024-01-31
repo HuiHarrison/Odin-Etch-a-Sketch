@@ -1,6 +1,7 @@
 const grid = document.querySelector(".grid");
 const gridInput = document.querySelector(".range-bar input");
 const gridSize = document.querySelector("#gridSize");
+const rainbowBtn = document.querySelector("#rainbowBtn");
 
 gridInput.addEventListener("input", createGrid);
 
