@@ -33,9 +33,11 @@ h1 {
 .content {
     flex: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 50px 0;
+    gap: 10px;
 }
 
 .content .container {
@@ -46,9 +48,44 @@ h1 {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 25px;
 }
+
+.rubberBtn {
+    /* Variables */
+    --button_radius: 0.75em;
+    --button_color: #a3a3a3;
+    --button_outline_color: #000000;
+    font-size: 17px;
+    font-weight: bold;
+    border: none;
+    border-radius: var(--button_radius);
+    background: var(--button_outline_color);
+  }
+  
+  .button-top {
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid var(--button_outline_color);
+    border-radius: var(--button_radius);
+    padding: 0.75em 1.5em;
+    background: var(--button_color);
+    color: var(--button_outline_color);
+    transform: translateY(-0.2em);
+    transition: transform 0.1s ease;
+  }
+  
+  .rubberBtn:hover .button-top {
+    /* Pull the button upwards when hovered */
+    transform: translateY(-0.33em);
+    color: white;
+  }
+  
+  .rubberBtn:active .button-top {
+    /* Push the button downwards when pressed */
+    transform: translateY(0);
+  }
 
 .clearBtn {
     position: relative;
@@ -96,6 +133,7 @@ h1 {
    .clearBtn .front {
     display: block;
     position: relative;
+    font-weight: bold;
     padding: 12px 27px;
     border-radius: 12px;
     font-size: 1.1rem;
@@ -219,7 +257,7 @@ width: 100%;
   }
   
   .PB-range-slidervalue {
-    font-weight: 600;
+    font-weight: bold;
   }
 
 .grid {
@@ -236,7 +274,6 @@ width: 100%;
 }
 
 .box {
-    /* border: 1px solid #1d3557; */
     flex: 1;
     background-color: white;
 }
