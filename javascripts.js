@@ -1,9 +1,23 @@
 const grid = document.querySelector(".grid");
 const gridInput = document.querySelector("#myRange");
 const sliderValue = document.querySelector(".PB-range-slidervalue");
-const rainbowBtn = document.querySelector("#rainbowBtn");
+const rainbowBtn = document.querySelector(".rainbowBtn");
 
 gridInput.addEventListener("input", createGrid);
+
+// Toggle Rainbow Mode
+let isRainbowModeOn = false;
+
+rainbowBtn.addEventListener("click", () => {
+    isRainbowModeOn = !isRainbowModeOn;
+
+    if (isRainbowModeOn) {
+        rainbowBtn.classList.add("rainbow-hover");
+        rainbowBtn.setAttribute("id", "rainbowOn")
+    } else {
+        rainbowBtn.removeAttribute("id", "rainbowOn");
+    }
+});
 
 function createGrid() {
     // Update #gridSize

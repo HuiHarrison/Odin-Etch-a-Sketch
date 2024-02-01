@@ -27,6 +27,7 @@ body {
 h1 {
     text-align: center;
     padding: 10px;
+    font-size: 45px;
 }
 
 .content {
@@ -49,7 +50,7 @@ h1 {
     align-items: center;
 }
 
-#rainbowBtn {
+.rainbowBtn {
     border: none;
     border-radius: 20px;
     background: linear-gradient(32deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
@@ -60,7 +61,7 @@ h1 {
     padding: 0;
 }
    
-#rainbowBtn span {
+.rainbowBtn span {
 display: inline-block;
 padding: 15px 35px;
 font-size: 17px;
@@ -73,7 +74,8 @@ height: 100%;
 width: 100%;
 }
    
-#rainbowBtn span:hover {
+.rainbowBtn span:hover,
+#rainbowOn span {
     backdrop-filter: blur(0px);
     color: #ffffff;
 }
