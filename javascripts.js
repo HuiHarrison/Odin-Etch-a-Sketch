@@ -3,6 +3,11 @@ const gridInput = document.querySelector("#myRange");
 const sliderValue = document.querySelector(".PB-range-slidervalue");
 const rainbowBtn = document.querySelector(".rainbowBtn");
 
+// Generate random value between 0 - 255
+function getRandomRGBValue(){
+    return Math.floor(Math.random() * 256);
+} 
+
 gridInput.addEventListener("input", createGrid);
 
 // Toggle Rainbow Mode
@@ -38,22 +43,19 @@ function createGrid() {
             const box = document.createElement("div");
             box.setAttribute("class", "box");
 
-            // Generate random Colour Hex
-            const randomColor = Math.floor(Math.random()*16777215).toString(16);
-
-            // Change colour to black if mouse is hover over
+            // Change colour if mouse is hover over
             box.addEventListener("mouseover", () => {
                 if (isRainbowModeOn) {
-                    box.setAttribute("style", `background-color: #${randomColor};`)
+                    box.setAttribute("style", `background-color: rgb(${getRandomRGBValue()}, ${getRandomRGBValue()}, ${getRandomRGBValue()});`)
                 }
                 else {
                     box.setAttribute("style", "background-color: black;")
                 }
             });
-            // Change colour to black if mouse is hover out
+            // Change colour if mouse is hover out
             box.addEventListener("mouseout", () => {
                 if (isRainbowModeOn) {
-                    box.setAttribute("style", `background-color: #${randomColor};`)
+                    box.setAttribute("style", `background-color: rgb(${getRandomRGBValue()}, ${getRandomRGBValue()}, ${getRandomRGBValue()});`)
                 }
                 else {
                     box.setAttribute("style", "background-color: black;")
