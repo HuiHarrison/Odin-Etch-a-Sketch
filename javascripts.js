@@ -22,8 +22,10 @@ rainbowBtn.addEventListener("click", () => {
 function createGrid() {
     // Update #gridSize
     gridInput.addEventListener("input", () => {sliderValue.innerText = `${gridInput.value}`});
+    
     // Clear Grid
     grid.innerHTML = ""
+
     // Create Grid
     for(let y=0; y<gridInput.value; y++){
         // Create rows
@@ -35,9 +37,28 @@ function createGrid() {
         for (let x=0; x<gridInput.value; x++) {
             const box = document.createElement("div");
             box.setAttribute("class", "box");
-            // Change colour if hover
-            box.addEventListener("mouseover", () => {box.setAttribute("style", "background-color: black;")}, false);
-            box.addEventListener("mouseout", () => {box.setAttribute("style", "background-color: black;")}, false);
+
+            // Generate random Colour Hex
+            const randomColor = Math.floor(Math.random()*16777215).toString(16);
+
+            // Change colour to black if mouse is hover over
+            box.addEventListener("mouseover", () => {
+                if (isRainbowModeOn) {
+                    box.setAttribute("style", `background-color: #${randomColor};`)
+                }
+                else {
+                    box.setAttribute("style", "background-color: black;")
+                }
+            });
+            // Change colour to black if mouse is hover out
+            box.addEventListener("mouseout", () => {
+                if (isRainbowModeOn) {
+                    box.setAttribute("style", `background-color: #${randomColor};`)
+                }
+                else {
+                    box.setAttribute("style", "background-color: black;")
+                }
+            });
             row.append(box);
         }
     }
