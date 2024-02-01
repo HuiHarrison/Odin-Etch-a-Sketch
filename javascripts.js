@@ -2,17 +2,25 @@ const grid = document.querySelector(".grid");
 const gridInput = document.querySelector("#myRange");
 const sliderValue = document.querySelector(".PB-range-slidervalue");
 const rainbowBtn = document.querySelector(".rainbowBtn");
+const clearBtn = document.querySelector(".clearBtn")
 
 // Generate random value between 0 - 255
 function getRandomRGBValue(){
     return Math.floor(Math.random() * 256);
 } 
 
+// Grid Slider Bar
 gridInput.addEventListener("input", createGrid);
+
+// Clear Button
+clearBtn.addEventListener("click", () => {
+    for (box of document.querySelectorAll(".box")) {
+        box.setAttribute("style", "background-color: white;")
+    }
+})
 
 // Toggle Rainbow Mode
 let isRainbowModeOn = false;
-
 rainbowBtn.addEventListener("click", () => {
     isRainbowModeOn = !isRainbowModeOn;
 
