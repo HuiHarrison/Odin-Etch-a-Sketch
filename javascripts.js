@@ -3,6 +3,8 @@ const gridInput = document.querySelector("#myRange");
 const sliderValue = document.querySelector(".PB-range-slidervalue");
 const rainbowBtn = document.querySelector(".rainbowBtn");
 const clearBtn = document.querySelector(".clearBtn")
+const rubberBtn = document.querySelector(".rubberBtn")
+const rubberBtnTop = document.querySelector(".rubberBtn .button-top")
 
 // Generate random value between 0 - 255
 function getRandomRGBValue(){
@@ -15,21 +17,48 @@ gridInput.addEventListener("input", createGrid);
 // Clear Button
 clearBtn.addEventListener("click", () => {
     for (box of document.querySelectorAll(".box")) {
-        box.setAttribute("style", "background-color: white;")
+        box.setAttribute("style", "background-color: white;");
     }
 })
 
 // Toggle Rainbow Mode
 let isRainbowModeOn = false;
-rainbowBtn.addEventListener("click", () => {
-    isRainbowModeOn = !isRainbowModeOn;
 
+function rainbowMode(isRainbowModeOn) {
     if (isRainbowModeOn) {
-        rainbowBtn.classList.add("rainbow-hover");
-        rainbowBtn.setAttribute("id", "rainbowOn")
+        rainbowBtn.setAttribute("id", "rainbowOn");
     } else {
         rainbowBtn.removeAttribute("id", "rainbowOn");
     }
+}
+
+rainbowBtn.addEventListener("click", () => {
+    isRainbowModeOn = !isRainbowModeOn;
+    rainbowMode (isRainbowModeOn)
+
+    // Turn off Rubber Mode
+    isRubberOn = false;
+    rubberMode(isRubberOn)
+});
+
+// Toggle Rubber
+let isRubberOn = false;
+
+function rubberMode(isRubberOn) {
+    if (isRubberOn) {
+        rubberBtnTop.setAttribute("style", "color: white;")
+    } else {
+        rubberBtnTop.removeAttribute("style", "color: white;")
+    }
+}
+
+rubberBtn.addEventListener("click", () => {
+    isRubberOn = !isRubberOn;
+    rubberMode(isRubberOn)
+
+    // Turn off Rainbow Mode
+    isRainbowModeOn = false;
+    rainbowMode(isRainbowModeOn);
 });
 
 function createGrid() {
@@ -53,20 +82,31 @@ function createGrid() {
 
             // Change colour if mouse is hover over
             box.addEventListener("mouseover", () => {
-                if (isRainbowModeOn) {
-                    box.setAttribute("style", `background-color: rgb(${getRandomRGBValue()}, ${getRandomRGBValue()}, ${getRandomRGBValue()});`)
+                if (isRubberOn) {
+                    box.setAttribute("style", "background-color: white;")
                 }
                 else {
-                    box.setAttribute("style", "background-color: black;")
+                    if (isRainbowModeOn) {
+                        box.setAttribute("style", `background-color: rgb(${getRandomRGBValue()}, ${getRandomRGBValue()}, ${getRandomRGBValue()});`)
+                    }
+                    else {
+                        box.setAttribute("style", "background-color: black;")
+                    }
                 }
             });
+
             // Change colour if mouse is hover out
             box.addEventListener("mouseout", () => {
-                if (isRainbowModeOn) {
-                    box.setAttribute("style", `background-color: rgb(${getRandomRGBValue()}, ${getRandomRGBValue()}, ${getRandomRGBValue()});`)
+                if (isRubberOn) {
+                    box.setAttribute("style", "background-color: white;")
                 }
                 else {
-                    box.setAttribute("style", "background-color: black;")
+                    if (isRainbowModeOn) {
+                        box.setAttribute("style", `background-color: rgb(${getRandomRGBValue()}, ${getRandomRGBValue()}, ${getRandomRGBValue()});`)
+                    }
+                    else {
+                        box.setAttribute("style", "background-color: black;")
+                    }
                 }
             });
             row.append(box);

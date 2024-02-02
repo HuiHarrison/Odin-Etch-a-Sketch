@@ -58,17 +58,15 @@ h1 {
     --button_radius: 12px;
     --button_color: #a3a3a3;
     --button_outline_color: #777777;
-    /* font-size: 17px; */
     font-weight: bold;
     border: none;
     border-radius: var(--button_radius);
     background: var(--button_outline_color);
   }
   
-  .button-top {
+  .rubberBtn .button-top {
     display: block;
     box-sizing: border-box;
-    /* border: 1px solid var(--button_outline_color); */
     border-radius: var(--button_radius);
     padding: 15px 35px;
     background: var(--button_color);
